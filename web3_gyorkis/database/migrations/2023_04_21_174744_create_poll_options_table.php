@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('poll_questions', function (Blueprint $table) {
+        Schema::create('poll_options', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('poll_id')->constrained();

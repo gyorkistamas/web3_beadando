@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->longText('comment_text');
             $table->foreignId('user_id')->constrained();
-            
+            $table->foreignId('poll_id')->constrained();
         });
     }
 
