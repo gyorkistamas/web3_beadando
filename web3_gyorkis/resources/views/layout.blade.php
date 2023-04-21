@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary rounded-2" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary rounded-3" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <i class="bi bi-check-square-fill"></i>
@@ -25,25 +25,49 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Főoldal</a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
+                    <a class="btn {{ Route::currentRouteName() == 'home' ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="{{route('home')}}"><i class="bi bi-house-door-fill me-1"></i>{{__('Főoldal')}}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
+
+                @auth
+                    <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn {{ Request::is('/') ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="/">{{__('Szavazásaim')}}</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn {{ Request::is('/') ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="/">{{__('Szavazás létrehozása')}}</a>
+                    </li>
+                @endauth
+
+                @guest
+                    <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn {{ Request::is('/login') ? 'btn-success' : 'btn-secondary'}} w-100" href="#"><i class="bi bi-box-arrow-in-left me-1"></i>{{__('Bejelentkezés')}}</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn {{ Route::currentRouteName() == 'register' ? 'btn-success' : 'btn-secondary'}} w-100" href="{{route('register')}}"><i class="bi bi-person-fill-add me-1"></i>{{__('Regisztráció')}}</a>
+                    </li>
+                @endguest
+
+                @auth
+                    <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Felhasználó
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">{{__('Profil szerkesztése')}}</a></li>
+                                <li><a class="dropdown-item text-danger" href="#">{{__('Kijelentkezés')}}</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                @endauth
+
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container bg-dark text-white px-3 py-4 mt-4" style="--bs-bg-opacity: .8;">
+<div class="container bg-dark text-white px-3 py-4 mt-4 rounded-3" style="--bs-bg-opacity: .8;">
     @yield('content')
 </div>
 
