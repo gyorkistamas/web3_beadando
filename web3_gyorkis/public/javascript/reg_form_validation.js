@@ -8,6 +8,8 @@ const emailError = document.getElementById('emailError');
 const passwordError = document.getElementById('passwordError');
 const passwordConfError = document.getElementById('passwordConfError');
 
+const emailAlreadyExistsError = document.getElementById('emailAlreadyExistsError');
+
 const regForm = document.getElementById('regForm');
 
 const  IsNameCorrect = () => nameInput.value.length !== 0;
@@ -47,6 +49,10 @@ emailInput.addEventListener('input', () => {
         emailInput.classList.add('is-invalid');
         emailInput.classList.remove('is-valid');
         emailError.hidden = false;
+    }
+
+    if (emailAlreadyExistsError != null) {
+        emailAlreadyExistsError.hidden = true;
     }
 });
 

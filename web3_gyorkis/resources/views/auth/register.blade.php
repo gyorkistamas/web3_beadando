@@ -11,6 +11,16 @@
         <h1>Regisztráció <hr></h1>
     </div>
 
+    @if (session()->has('success'))
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-lg-5">
+                <div class="alert alert-success mt-2" role="alert" data-bs-theme="dark">
+                    A regisztráció sikeres volt, most már bejelentkezhet!
+                </div>
+            </div>
+        </div>
+    @endif
+
     <form method="POST" action="{{route('register.store')}}" id="regForm">
         @csrf
         <div class="row d-flex justify-content-center">
@@ -34,6 +44,11 @@
                 <div class="alert alert-danger mt-2" role="alert" data-bs-theme="dark" id="emailError" hidden>
                     Az email cím nem megfelelően lett megadva!
                 </div>
+                @error('email')
+                <div class="alert alert-danger mt-2" role="alert" data-bs-theme="dark" id="emailAlreadyExistsError">
+                    Ez az e-mail cím már használatban van!
+                </div>
+                @enderror
             </div>
         </div>
 
