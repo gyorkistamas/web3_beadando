@@ -1,1 +1,1 @@
-# web3_beadando
+# Webprogramozás III. beadandó feladat - Györkis Tamás - 2023
