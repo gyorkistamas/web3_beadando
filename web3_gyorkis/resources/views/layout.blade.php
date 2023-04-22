@@ -27,36 +27,36 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
-                    <a class="btn {{ Route::currentRouteName() == 'home' ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="{{route('home')}}"><i class="bi bi-house-door-fill me-1"></i>{{__('Főoldal')}}</a>
+                    <a class="btn {{ request()->route()->named('home') == 'home' ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="{{route('home')}}"><i class="bi bi-house-door-fill me-1"></i>{{__('Főoldal')}}</a>
                 </li>
 
                 @auth
                     <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
-                        <a class="btn {{ Request::is('/') ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="/">{{__('Szavazásaim')}}</a>
+                        <a class="btn {{ request()->route()->named('polls') ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="/"><i class="bi bi-card-checklist me-1"></i>{{__('Szavazásaim')}}</a>
                     </li>
                     <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
-                        <a class="btn {{ Request::is('/') ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="/">{{__('Szavazás létrehozása')}}</a>
+                        <a class="btn {{ request()->route()->named('poll.new') ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="/"><i class="bi bi-file-earmark-plus me-1"></i>{{__('Szavazás létrehozása')}}</a>
                     </li>
                 @endauth
 
                 @guest
                     <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
-                        <a class="btn {{ Request::is('/login') ? 'btn-success' : 'btn-secondary'}} w-100" href="#"><i class="bi bi-box-arrow-in-left me-1"></i>{{__('Bejelentkezés')}}</a>
+                        <a class="btn {{ request()->route()->named('login') ? 'btn-success' : 'btn-secondary'}} w-100" href="{{route('login')}}"><i class="bi bi-box-arrow-in-left me-1"></i>{{__('Bejelentkezés')}}</a>
                     </li>
                     <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
-                        <a class="btn {{ Route::currentRouteName() == 'register' ? 'btn-success' : 'btn-secondary'}} w-100" href="{{route('register')}}"><i class="bi bi-person-fill-add me-1"></i>{{__('Regisztráció')}}</a>
+                        <a class="btn {{ request()->route()->named('register') ? 'btn-success' : 'btn-secondary'}} w-100" href="{{route('register')}}"><i class="bi bi-person-fill-add me-1"></i>{{__('Regisztráció')}}</a>
                     </li>
                 @endguest
 
                 @auth
                     <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
                         <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Felhasználó
+                            <a class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{Auth::user()->gravatarLink()}}" class="profilPic"/>Felhasználó
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">{{__('Profil szerkesztése')}}</a></li>
-                                <li><a class="dropdown-item text-danger" href="#">{{__('Kijelentkezés')}}</a></li>
+                                <li><a class="dropdown-item" href="{{route('edit-profile')}}"><i class="bi bi-pencil-square me-1"></i>{{__('Profil szerkesztése')}}</a></li>
+                                <li><a class="dropdown-item text-danger" href="{{route('logout')}}"><i class="bi bi-box-arrow-left me-1"></i>{{__('Kijelentkezés')}}</a></li>
                             </ul>
                         </div>
                     </li>
@@ -70,6 +70,8 @@
 <div class="container bg-dark text-white px-3 py-4 mt-4 rounded-3" style="--bs-bg-opacity: .8;">
     @yield('content')
 </div>
+
+@yield('toast')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 @yield('custom_script')

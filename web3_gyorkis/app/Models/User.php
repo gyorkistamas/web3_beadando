@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function gravatarLink(): string
+    {
+        return 'https://gravatar.com/avatar/' . md5($this->email) . '?d=identicon';
+    }
 }
