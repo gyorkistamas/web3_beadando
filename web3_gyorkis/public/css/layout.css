@@ -5,8 +5,10 @@
 body {
     font-family: 'Noto Sans', sans-serif;
 
-    background-image: url("/bg.png");
-    background-repeat: no-repeat;
+    background: url("/bg.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
 
     padding: 5px;
