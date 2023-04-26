@@ -16,8 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('poll_id')->constrained();
             $table->string('name');
-            $table->string('description', 50)->nullable();
-            $table->integer('number_of_answers');
+            $table->integer('number_of_answers')->default(0);
         });
     }
 

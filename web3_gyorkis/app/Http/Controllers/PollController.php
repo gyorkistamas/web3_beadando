@@ -12,4 +12,9 @@ class PollController extends Controller
     {
         return view('polls.create_poll');
     }
+
+    public function store()
+    {
+
+    }
 }

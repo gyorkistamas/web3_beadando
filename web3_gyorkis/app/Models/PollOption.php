@@ -12,7 +12,6 @@ class PollOption extends Model
 
     protected $fillable = [
       'name',
-      'description',
       'number_of_answers'
     ];
 
