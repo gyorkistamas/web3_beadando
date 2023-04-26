@@ -75,7 +75,7 @@
             <div class="toast-header">
                 <i class="bi bi-check-square-fill me-1"></i>
                 <strong class="me-auto">Profil frissítése</strong>
-                <small>now</small>
+                <small>most</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">

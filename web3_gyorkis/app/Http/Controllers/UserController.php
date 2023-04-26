@@ -48,7 +48,7 @@ class UserController extends Controller
 
         if (Auth::attempt($fields))
         {
-            return redirect()->route('home');
+            return redirect()->intended(route('home'));
         }
 
         return redirect()->back()->with('bad_credentials', 'Bad credentials');

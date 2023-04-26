@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PollController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Controller::class, 'home'])->name('home');
 
+//Register and login
 Route::middleware('guest')->group( function () {
 
     Route::get('/register', [UserController::class, 'create'])->name('register');
@@ -26,9 +28,14 @@ Route::middleware('guest')->group( function () {
     Route::post('/login', [UserController::class, 'auth'])->name('login.auth');
 });
 
+//Logout and edit profile
 Route::middleware('auth')->group(function () {
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
-
     Route::get('/edit-profile', [UserController::class, 'update'])->name('edit-profile');
     Route::post('/edit-profile', [UserController::class, 'save'])->name('edit-profile.save');
+});
+
+// Create poll
+Route::middleware('auth')->group(function () {
+    Route::get('/poll/new', [PollController::class, 'create'])->name('polls.create');
 });

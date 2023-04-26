@@ -35,7 +35,7 @@
                         <a class="btn {{ request()->route()->named('polls') ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="/"><i class="bi bi-card-checklist me-1"></i>{{__('Szavazásaim')}}</a>
                     </li>
                     <li class="nav-item ms-0 ms-lg-3 mt-3 mt-lg-0">
-                        <a class="btn {{ request()->route()->named('poll.new') ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="/"><i class="bi bi-file-earmark-plus me-1"></i>{{__('Szavazás létrehozása')}}</a>
+                        <a class="btn {{ request()->route()->named('polls.create') ? 'btn-success' : 'btn-secondary'}} w-100" aria-current="page" href="{{route('polls.create')}}"><i class="bi bi-file-earmark-plus me-1"></i>{{__('Szavazás létrehozása')}}</a>
                     </li>
                 @endauth
 
