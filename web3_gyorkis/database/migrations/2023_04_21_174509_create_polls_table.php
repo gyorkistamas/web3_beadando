@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->foreignId('user_id')->constrained();
             $table->longText('description')->nullable();
-            $table->boolean('running');
-            $table->boolean('is_multiple');
+            $table->boolean('running')->default(true);
+            $table->boolean('is_multiple')->default(false);
         });
     }
 

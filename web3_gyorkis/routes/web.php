@@ -38,4 +38,8 @@ Route::middleware('auth')->group(function () {
 // Create poll
 Route::middleware('auth')->group(function () {
     Route::get('/poll/new', [PollController::class, 'create'])->name('polls.create');
+    Route::post('/poll/new', [PollController::class, 'store'])->name('polls.store');
 });
+
+//Answer poll
+Route::get('/poll/{poll}', [PollController::class, 'get'])->name('polls.get');
