@@ -44,7 +44,7 @@ class PollController extends Controller
             }
         }
 
-        return redirect()->back()->with(['success' => __('Kérdőív sikeresen létrehozva!')]);
+        return redirect()->back()->with(['success' => __('Kérdőív sikeresen létrehozva!'), 'poll_id' => $poll->id]);
     }
 
     public function getResult(Poll $poll)

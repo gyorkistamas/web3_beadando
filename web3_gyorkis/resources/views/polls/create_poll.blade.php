@@ -8,6 +8,17 @@
 
 @section('content')
 
+
+        @if(session()->has('success'))
+            <div class="d-flex justify-content-center">
+                <div class="alert alert-success" role="alert" data-bs-theme="dark">
+                    {{__('Használja az alábbi linket a kérdőív megosztására: ')}}<a href="{{route('polls.answer', session()->get('poll_id'))}}">{{route('polls.answer', session()->get('poll_id'))}}</a>
+                    <button class="btn btn-primary ms-2" onclick="copy('{{route('polls.answer', session()->get('poll_id'))}}')"><i class="bi bi-pencil-square me-2"></i>{{__('Link másolása')}}</button>
+                </div>
+            </div>
+        @endif
+
+
     <form method="POST" action="{{route('polls.store')}}">
         @csrf
         <div class="row">
@@ -66,6 +77,11 @@
         const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl))
 
         toastList.forEach(toast => toast.show());
+
+        function copy(text) {
+
+            navigator.clipboard.writeText(text);
+        }
 
     </script>
 @endsection
