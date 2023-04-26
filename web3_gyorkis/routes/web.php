@@ -43,3 +43,4 @@ Route::middleware('auth')->group(function () {
 
 //Answer poll
 Route::get('/poll/{poll}', [PollController::class, 'get'])->name('polls.get');
+Route::post('/poll/{poll}', [PollController::class, 'answerPoll'])->name('polls.answer');

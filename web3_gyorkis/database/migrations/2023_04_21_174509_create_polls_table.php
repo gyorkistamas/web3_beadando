@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->boolean('running')->default(true);
             $table->boolean('is_multiple')->default(false);
+            $table->integer('number_of_submits')->default(0);
         });
     }
 
