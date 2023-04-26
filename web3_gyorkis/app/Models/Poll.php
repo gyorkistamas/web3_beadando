@@ -14,7 +14,8 @@ class Poll extends Model
         'name',
         'description',
         'running',
-        'is_multiple'
+        'is_multiple',
+        'number_of_submits'
     ];
 
     public function comments(): HasMany

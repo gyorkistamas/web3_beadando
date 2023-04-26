@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerPollController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\UserController;
@@ -42,5 +43,8 @@ Route::middleware('auth')->group(function () {
 });
 
 //Answer poll
-Route::get('/poll/{poll}', [PollController::class, 'get'])->name('polls.get');
-Route::post('/poll/{poll}', [PollController::class, 'answerPoll'])->name('polls.answer');
+Route::get('/poll/{poll}', [AnswerPollController::class, 'get'])->name('polls.get');
+Route::post('/poll/{poll}', [AnswerPollController::class, 'answerPoll'])->name('polls.answer');
+
+// Get poll results
+Route::get('poll/{poll}/result', [PollController::class, 'getResult'])->name('polls.result');
