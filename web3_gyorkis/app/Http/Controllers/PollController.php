@@ -51,4 +51,11 @@ class PollController extends Controller
     {
         return view('polls.view_results')->with(['poll' => $poll]);
     }
+
+    public function index()
+    {
+        return view('polls.my_polls')->with([
+            'polls' => Auth::user()->polls
+        ]);
+    }
 }

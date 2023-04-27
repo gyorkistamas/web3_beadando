@@ -31,15 +31,15 @@ Route::middleware('guest')->group( function () {
 
 //Logout and edit profile
 Route::middleware('auth')->group(function () {
-    Route::get('logout', [UserController::class, 'logout'])->name('logout');
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
     Route::get('/edit-profile', [UserController::class, 'update'])->name('edit-profile');
     Route::post('/edit-profile', [UserController::class, 'save'])->name('edit-profile.save');
 });
 
 // Create poll
 Route::middleware('auth')->group(function () {
-    Route::get('/poll/new', [PollController::class, 'create'])->name('polls.create');
-    Route::post('/poll/new', [PollController::class, 'store'])->name('polls.store');
+    Route::get('/poll/create', [PollController::class, 'create'])->name('polls.create');
+    Route::post('/poll/create', [PollController::class, 'store'])->name('polls.store');
 });
 
 //Answer poll
@@ -47,4 +47,9 @@ Route::get('/poll/{poll}', [AnswerPollController::class, 'get'])->name('polls.ge
 Route::post('/poll/{poll}', [AnswerPollController::class, 'answerPoll'])->name('polls.answer');
 
 // Get poll results
-Route::get('poll/{poll}/result', [PollController::class, 'getResult'])->name('polls.result');
+Route::get('/poll/{poll}/result', [PollController::class, 'getResult'])->name('polls.result');
+
+// Poll updates and deletes
+Route::middleware('auth')->group(function () {
+    Route::get('/my-polls', [PollController::class, 'index'])->name('polls.index');
+});
