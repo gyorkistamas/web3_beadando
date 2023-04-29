@@ -8,8 +8,13 @@
             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" wire:model="onlyRunning" wire:change="updateSearch">
             <label class="form-check-label" for="flexSwitchCheckDefault">{{__('Csak futó kérdőívek megjelenítése')}}</label>
         </div>
+
         <div class="spinner-border text-primary mb-3 mb-lg-0 ms-5 ms-lg-0" role="status" wire:loading.flex>
             <span class="visually-hidden">Loading...</span>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            {{$polls->links()}}
         </div>
     </div>
 

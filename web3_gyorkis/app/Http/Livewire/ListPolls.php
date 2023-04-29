@@ -9,6 +9,7 @@ class ListPolls extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['pollListUpdate' => 'render'];
     protected $paginationTheme = 'bootstrap';
 
     public $searchText = "";

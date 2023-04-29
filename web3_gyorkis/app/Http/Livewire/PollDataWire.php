@@ -17,6 +17,9 @@ class PollDataWire extends Component
         $this->poll->running = true;
         $this->poll->save();
         $this->isUpdate = true;
+        $this->dispatchBrowserEvent('alert', [
+            'type' => 'opened'
+        ]);
         //$this->render();
     }
 
@@ -25,7 +28,19 @@ class PollDataWire extends Component
         $this->poll->running = false;
         $this->poll->save();
         $this->isUpdate = true;
+        $this->dispatchBrowserEvent('alert', [
+            'type' => 'closed'
+        ]);
        // $this->render();
+    }
+
+    public function deletePoll()
+    {
+        $this->poll->delete();
+        $this->dispatchBrowserEvent('alert', [
+            'type' => 'deleted'
+        ]);
+        $this->emit('pollListUpdate');
     }
 
     public function paginationView()

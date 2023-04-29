@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-start @if($isUpdate) show @endif" tabindex="-1" id="canvas{{$poll->id}}" aria-labelledby="offcanvasLabel" data-bs-theme="dark">
+    <div class="offcanvas offcanvas-start @if($isUpdate) show @endif" tabindex="-1" id="canvas{{$poll->id}}" aria-labelledby="offcanvasLabel" data-bs-theme="dark" data-bs-scroll="true" data-bs-backdrop="false">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasLabel">{{$poll->name}}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -47,7 +47,6 @@
             @endforeach
 
 
-
             <div class="d-flex align-items-center">
 
                 @if($poll->running)
@@ -56,13 +55,31 @@
                     <button class="btn btn-success" wire:click="reopenPoll">{{__('Újranyitás')}}</button>
                 @endif
 
-                <button class="btn btn-danger ms-3 me-4">{{__('Törlés')}}</button>
+                <button class="btn btn-danger ms-3 me-4" data-bs-toggle="modal" data-bs-target="#modal{{$poll->id}}">{{__('Törlés')}}</button>
 
                 <div class="spinner-border text-primary" role="status" wire:loading>
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal{{$poll->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{__('Törlés')}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h1>Biztosan törli a kérdőívet?</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" wire:click="deletePoll">{{__('Törlés')}}</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{__('Mégsem')}}</button>
+                </div>
+            </div>
         </div>
     </div>
 
