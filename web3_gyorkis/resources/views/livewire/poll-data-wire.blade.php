@@ -11,7 +11,7 @@
             </p>
 
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#canvas{{$poll->id}}" aria-controls="offcanvasExample">
-                {{__('Megtekintés')}}
+                <i class="bi bi-eye-fill me-2"></i>{{__('Megtekintés')}}
             </button>
         </div>
     </div>
@@ -50,12 +50,12 @@
             <div class="d-flex align-items-center">
 
                 @if($poll->running)
-                    <button class="btn btn-warning" wire:click="closePoll">{{ __('Lezárás') }}</button>
+                    <button class="btn btn-warning" wire:click="closePoll"><i class="bi bi-lock-fill me-2"></i>{{ __('Lezárás') }}</button>
                 @else
-                    <button class="btn btn-success" wire:click="reopenPoll">{{__('Újranyitás')}}</button>
+                    <button class="btn btn-success" wire:click="reopenPoll"><i class="bi bi-unlock-fill me-2"></i>{{__('Újranyitás')}}</button>
                 @endif
 
-                <button class="btn btn-danger ms-3 me-4" data-bs-toggle="modal" data-bs-target="#modal{{$poll->id}}">{{__('Törlés')}}</button>
+                <button class="btn btn-danger ms-3 me-4" data-bs-toggle="modal" data-bs-target="#modal{{$poll->id}}"><i class="bi bi-trash-fill me-2"></i>{{__('Törlés')}}</button>
 
                 <div class="spinner-border text-primary" role="status" wire:loading>
                     <span class="visually-hidden">Loading...</span>
