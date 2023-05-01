@@ -21,6 +21,12 @@ class ListPolls extends Component
         $this->resetPage();
     }
 
+    public  function update()
+    {
+        $this->emit('update');
+        $this->resetPage();
+    }
+
     public function render()
     {
         if ($this->onlyRunning)

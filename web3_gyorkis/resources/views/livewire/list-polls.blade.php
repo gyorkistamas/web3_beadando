@@ -7,6 +7,7 @@
         <div class="form-check form-switch col-12 col-md-5 ms-3 mb-3 mb-lg-0">
             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" wire:model="onlyRunning" wire:change="updateSearch">
             <label class="form-check-label" for="flexSwitchCheckDefault">{{__('Csak futó kérdőívek megjelenítése')}}</label>
+            <button class="btn btn-primary ms-3" type="button" wire:click="update"><i class="bi bi-arrow-clockwise me-2"></i>{{__('Frissítés')}}</button>
         </div>
 
         <div class="spinner-border text-primary mb-3 mb-lg-0 ms-5 ms-lg-0" role="status" wire:loading.flex>

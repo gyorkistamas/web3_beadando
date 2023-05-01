@@ -12,6 +12,13 @@ class PollDataWire extends Component
 
     public bool $isUpdate = false;
 
+    protected $listeners = ['update' => 'reload'];
+
+    public function reload()
+    {
+        $this->poll = $this->poll->refresh();
+    }
+
     public function reopenPoll()
     {
         $this->poll->running = true;
