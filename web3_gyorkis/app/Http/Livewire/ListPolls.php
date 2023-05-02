@@ -23,7 +23,6 @@ class ListPolls extends Component
 
     public  function update()
     {
-        $this->emit('update');
         $this->resetPage();
     }
 
