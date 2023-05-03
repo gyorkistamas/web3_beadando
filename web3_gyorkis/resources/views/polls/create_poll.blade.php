@@ -39,8 +39,8 @@
                 </div>
 
                 <div class="d-flex justify-content-between mt-5 mb-5 mb-lg-0">
-                    <button type="submit" class="btn btn-success">{{__('Létrehozás')}}</button>
-                    <a class="btn btn-danger" href="{{route('home')}}">{{__('Mégse')}}</a>
+                    <button type="submit" class="btn btn-success"><i class="bi bi-plus-square me-2"></i>{{__('Létrehozás')}}</button>
+                    <a class="btn btn-danger" href="{{route('home')}}"><i class="bi bi-x-circle me-2"></i>{{__('Mégse')}}</a>
                 </div>
 
             </div>
