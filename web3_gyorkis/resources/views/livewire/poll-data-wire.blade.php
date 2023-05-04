@@ -46,7 +46,6 @@
                 </div>
             @endforeach
 
-
             <div class="d-flex align-items-center">
 
                 @if($poll->running)
@@ -61,6 +60,12 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
+
+            <div class="alert alert-success mt-3" role="alert">
+                {{__('Link: ')}} <a href="{{route('polls.get', $poll->id)}}" target="_blank">{{route('polls.get', $poll->id)}}</a>
+
+            </div>
+            <button type="button" class="btn btn-primary mt-2" onclick="navigator.clipboard.writeText('{{route('polls.get', $poll->id)}}');"><i class="bi bi-pencil-square me-2"></i>{{__('Másolás')}}</button>
 
         </div>
     </div>
