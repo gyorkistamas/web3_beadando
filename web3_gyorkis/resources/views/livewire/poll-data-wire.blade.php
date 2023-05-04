@@ -38,8 +38,8 @@
                             <div class="progress-bar" style="width: 0%">0 %</div>
                         </div>
                     @else
-                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="{{round(($question->number_of_answers / $poll->number_of_submits) * 100, 2)}}" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar" style="width: {{($question->number_of_answers / $poll->number_of_submits) * 100}}%">{{round(($question->number_of_answers / $poll->number_of_submits) * 100, 2)}} %</div>
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="{{$question->percentage()}}" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: {{$question->percentage()}}%">{{$question->percentage()}} %</div>
                         </div>
                     @endif
 

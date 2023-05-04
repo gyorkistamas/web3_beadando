@@ -19,4 +19,17 @@ class PollOption extends Model
     {
         return $this->belongsTo(Poll::class);
     }
+
+    public function percentage(): float
+    {
+        $answers = $this->number_of_answers;
+        $submits = $this->poll->number_of_submits;
+
+        if ($answers == 0 || $submits == 0)
+        {
+            return 0;
+        }
+
+        return round(($answers / $submits) * 100, 2);
+    }
 }
