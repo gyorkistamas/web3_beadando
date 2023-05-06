@@ -1,24 +1,26 @@
 <div class="mt-5">
-    <form wire:submit.prevent="saveComment">
-        <div class="d-flex justify-content-center align-items-center flex-lg-row flex-column">
-            <div class="form-floating" data-bs-theme="dark" style="min-width: 50%">
-                <textarea class="form-control @error('comment') is-invalid @else @if($comment != "") is-valid @endif @enderror" placeholder="Leave a comment here" id="floatingTextarea2"  style="width: 100%; height: 100%;" wire:model="comment" name="comment"></textarea>
-                <label for="floatingTextarea2">{{__('Üzenet')}}</label>
-                @error('comment')
-                <div class="alert alert-danger mt-2" role="alert">
-                    Legalább 5 karakter legyen!
+    @auth
+        <form wire:submit.prevent="saveComment">
+            <div class="d-flex justify-content-center align-items-center flex-lg-row flex-column">
+                <div class="form-floating" data-bs-theme="dark" style="min-width: 50%">
+                    <textarea class="form-control @error('comment') is-invalid @else @if($comment != "") is-valid @endif @enderror" placeholder="Leave a comment here" id="floatingTextarea2"  style="width: 100%; height: 100%;" wire:model="comment" name="comment"></textarea>
+                    <label for="floatingTextarea2">{{__('Üzenet')}}</label>
+                    @error('comment')
+                    <div class="alert alert-danger mt-2" role="alert">
+                        Legalább 5 karakter legyen!
+                    </div>
+                    @enderror
                 </div>
-                @enderror
-            </div>
-            <div class="mt-5 mt-lg-0 ms-0 ms-lg-5 d-flex justify-content-center align-items-center">
-                <button class="btn btn-primary" type="submit"><i class="bi bi-send me-2"></i>{{__('Küldés')}}</button>
-            </div>
+                <div class="mt-5 mt-lg-0 ms-0 ms-lg-5 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-send me-2"></i>{{__('Küldés')}}</button>
+                </div>
 
-            <div class="spinner-border ms-2" role="status" wire:loading wire:target="saveComment">
-                <span class="visually-hidden">Loading...</span>
+                <div class="spinner-border ms-2" role="status" wire:loading wire:target="saveComment">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    @endauth
 
     <div class="my-2">
         {{$comments->links()}}
