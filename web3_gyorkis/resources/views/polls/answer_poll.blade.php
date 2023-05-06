@@ -2,6 +2,10 @@
 
 @section('title', __('Kérdőív kitöltése'))
 
+@section('custom_css')
+    @livewireStyles
+@endsection
+
 @section('content')
     <form method="POST" action="{{route('polls.answer', $poll->id)}}">
         @csrf
@@ -23,4 +27,13 @@
 
         </div>
     </form>
+
+    <div>
+        <livewire:poll-comments :poll="$poll"/>
+    </div>
+
+@endsection
+
+@section('custom_script')
+    @livewireScripts
 @endsection

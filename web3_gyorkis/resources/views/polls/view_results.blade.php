@@ -2,6 +2,10 @@
 
 @section('title', __('Eredmények'))
 
+@section('custom_css')
+    @livewireStyles
+@endsection
+
 @section('content')
 
     <div class="row d-flex align-items-center flex-column">
@@ -21,6 +25,11 @@
         </div>
 
     </div>
+
+    <div>
+        <livewire:poll-comments :poll="$poll"/>
+    </div>
+
 @endsection
 
 @section('toast')
@@ -49,4 +58,8 @@
         toastList.forEach(toast => toast.show());
 
     </script>
+@endsection
+
+@section('custom_script')
+    @livewireScripts
 @endsection
