@@ -58,8 +58,6 @@
         toastList.forEach(toast => toast.show());
 
     </script>
-@endsection
 
-@section('custom_script')
     @livewireScripts
 @endsection
