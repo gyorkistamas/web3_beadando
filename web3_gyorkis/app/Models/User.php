@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return 'https://gravatar.com/avatar/' . md5($this->email) . '?d=identicon';
     }
+
+    public function pollAnswers() : HasMany
+    {
+        return $this->hasMany(PollAnswer::class);
+    }
 }

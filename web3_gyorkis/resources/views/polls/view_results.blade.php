@@ -7,7 +7,6 @@
 @endsection
 
 @section('content')
-
     <div class="row d-flex align-items-center flex-column">
         <div class="w-auto mb-4"><h1>{{$poll->name}} @if(!str_ends_with($poll->name, '?')) ? @endif</h1></div>
         <hr>
@@ -43,6 +42,21 @@
             </div>
             <div class="toast-body">
                 {{__('Válaszát rögzítettük!')}}
+            </div>
+        </div>
+
+    @endif
+
+    @if(session()->has('cantAnswer'))
+        <div class="toast text-white bg-danger position-fixed bottom-0 end-0 me-4 mb-4" role="alert" aria-live="assertive" aria-atomic="true" id="cantDoToast" data-bs-theme="dark">
+            <div class="toast-header">
+                <i class="bi bi-check-square-fill me-1"></i>
+                <strong class="me-auto">{{__('Már megválaszolta!')}}</strong>
+                <small>most</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                {{__('Nem töltheti ki még egyszer ezt a szavazást!')}}
             </div>
         </div>
 
